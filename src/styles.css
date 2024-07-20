@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --java-50: #f1fcfa;
+    --java-100: #d1f6f1;
+    --java-200: #a2ede4;
+    --java-300: #6cdcd2;
+    --java-400: #3cc3bc;
+    --java-500: #24a8a3;
+    --java-600: #1a8785;
+    --java-700: #196c6b;
+    --java-800: #195556;
+    --java-900: #194848;
+    --java-950: #08292b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: var(--java-50);
+    font-family: 'Inter Variable', sans-serif;
+}
