@@ -1,4 +1,9 @@
 :root {
+    --color-red: #E91C00;
+    --color-green: #11B203;
+    --color-orange: #E97E00;
+    --color-purple: #BB00E9;
+
     --java-50: #f1fcfa;
     --java-100: #d1f6f1;
     --java-200: #a2ede4;
