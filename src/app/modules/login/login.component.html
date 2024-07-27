@@ -1,1 +1,33 @@
-<p>login works!</p>
+<section>
+    <main>
+        <div>
+            <img src="/login/fisiomedic-logo.png" alt="logo fisiomedic">
+            <article>
+                <p>TERAPIA FISICA Y REHABILITACIÓN</p>
+                <h2><span>FISIO</span>MEDIC</h2>
+                <p>ELVIS SIMEON</p>
+            </article>
+        </div>
+        <div>
+            <form [formGroup]="user" (ngSubmit)="onSubmit()">
+                <h1>Login</h1>
+                <label>
+                    <span>Usuario:</span>
+                    <input type="text" placeholder="Nombre de usuario" formControlName="name" autocomplete="username">
+                </label>
+                <label>
+                    <span>Contraseña:</span>
+                    <input type="password" placeholder="Contraseña" autocomplete="current-password"
+                        formControlName="password">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </label>
+                <button type="submit" [disabled]="user.invalid">Iniciar sesión</button>
+            </form>
+            <ul>
+                <li><span id="facebook"></span></li>
+                <li><span id="x"></span></li>
+                <li><span id="web"></span></li>
+            </ul>
+        </div>
+    </main>
+</section>

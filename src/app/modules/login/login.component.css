@@ -1,0 +1,185 @@
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+main>div:last-child {
+    flex-direction: column;
+    border-left: 1px solid color-mix(in srgb, var(--java-950) 20%, transparent);
+    gap: 2rem;
+}
+
+main>div:first-child p {
+    color: var(--java-800);
+    text-align: end;
+    margin: -0.5rem 0;
+}
+
+main>div:first-child h2 {
+    color: var(--java-500);
+    font-size: 3rem;
+}
+
+main>div:first-child h2 span {
+    color: var(--java-900);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 22rem;
+}
+
+form h1 {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+form label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+form label span {
+    color: var(--java-900);
+    font-weight: 600;
+}
+
+form label a {
+    position: absolute;
+    color: var(--java-600);
+    right: 0;
+    top: 100%;
+    font-size: 0.8rem;
+}
+
+form input {
+    color: var(--java-900);
+    outline: none;
+    border: 1px solid var(--java-500);
+    padding: 0.5rem 0.75rem;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+}
+
+form input::placeholder {
+    color: var(--java-500);
+}
+
+form input:focus {
+    border-color: var(--java-900);
+}
+
+form button {
+    font-family: 'Inter Variable', sans-serif;
+    background-color: var(--java-900);
+    width: fit-content;
+    color: var(--java-50);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+    transition: 0.3s background-color;
+    -webkit-transition: 0.3s background-color;
+    -moz-transition: 0.3s background-color;
+    -ms-transition: 0.3s background-color;
+    -o-transition: 0.3s background-color;
+}
+
+form button:disabled {
+    cursor: not-allowed;
+    background-color: var(--java-200);
+    color: var(--java-500);
+}
+
+form button:not(:disabled):hover {
+    background-color: var(--java-950);
+}
+
+ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--java-600);
+    height: 2.5rem;
+    width: 2.5rem;
+    transition: 0.3s background-color;
+    -webkit-transition: 0.3s background-color;
+    -moz-transition: 0.3s background-color;
+    -ms-transition: 0.3s background-color;
+    -o-transition: 0.3s background-color;
+}
+
+li:hover {
+    background-color: var(--java-700);
+}
+
+li>span {
+    background-image: url('/login/icons-reds.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+li>span#facebook {
+    background-position: 0 0;
+}
+
+li>span#x {
+    background-position: -25px 0;
+}
+
+li>span#web {
+    background-position: -50px 0;
+}
+
+@media (width < 768px) {
+    main>div:first-child {
+        display: none;
+    }
+
+    main>div:last-child {
+        border-left: none;
+    }
+
+    form {
+        gap: 1.5rem;
+    }
+}
