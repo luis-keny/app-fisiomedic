@@ -1,0 +1,22 @@
+.breadcrumb {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    color: var(--java-950);
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: var(--bs-breadcrumb-divider, ">");
+    margin: 0 0.5rem;
+}
+
+a {
+    text-decoration: underline;
+    color: var(--java-600);
+}

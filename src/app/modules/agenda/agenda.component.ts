@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-agenda',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './agenda.component.html',
-  styleUrl: './agenda.component.css'
+  styleUrls: ['./agenda.component.css', '/src/app/shared/css/header-views.css']
 })
 export class AgendaComponent {
-
+  date: String = new Date().toISOString().split('T')[0];
 }

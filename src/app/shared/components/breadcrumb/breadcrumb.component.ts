@@ -8,23 +8,27 @@ import { BreadcrumbService } from '../../../core/index.service.triggers';
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.css'],
+  styleUrls: ['./breadcrumb.component.css', '/src/app/shared/css/header-views.css'],
   standalone: true,
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule],
 })
 export class BreadcrumbComponent implements OnInit, OnDestroy {
-  public breadcrumbs: Breadcrumb[] = [
-    { name: 'Home' }
-  ];
+  public breadcrumbs: Breadcrumb[] = [{ name: 'Home' }];
+  public isActiveBtn: boolean = false;
 
   subscription: Subscription = new Subscription();
 
   constructor(
-    private breadcrumbSrv: BreadcrumbService
+    private breadcrumbSrv: BreadcrumbService,
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.breadcrumbSrv.getBreadcrumbs().subscribe(res => this.breadcrumbs = res);
+    this.subscription = this.breadcrumbSrv.getBreadcrumbs().subscribe(res => {
+      setTimeout(() => {
+        this.breadcrumbs = res.breadcrumbList;
+        this.isActiveBtn = res.btnAdd || false;
+      });
+    });
   }
 
   ngOnDestroy(): void {

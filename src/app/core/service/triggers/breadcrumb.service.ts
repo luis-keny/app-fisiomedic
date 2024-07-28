@@ -1,26 +1,30 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Breadcrumb } from '../../index.model.system';
+import { Breadcrumb, BreadcrumbComportamiento } from '../../index.model.system';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreadcrumbService {
   private listBreadcrumb: Breadcrumb[] = []
-  private breadcrumbs$: EventEmitter<Breadcrumb[]> = new EventEmitter();
+  private breadcrumbs$: EventEmitter<BreadcrumbComportamiento> = new EventEmitter();
+  private comportamiento: BreadcrumbComportamiento = { breadcrumbList: [] }
 
-  public defineBreadcrumb(breadcrumbs: Breadcrumb[]) {
+  public defineBreadcrumb(breadcrumbs: Breadcrumb[], btnAdd?: boolean) {
     this.listBreadcrumb = breadcrumbs;
-    this.breadcrumbs$.emit(this.listBreadcrumb);
+    this.comportamiento.breadcrumbList = this.listBreadcrumb;
+    this.comportamiento.btnAdd = btnAdd || false;
+    this.breadcrumbs$.emit(this.comportamiento);
   }
 
   public addBread(breadcrumb: Breadcrumb) {
     this.listBreadcrumb.push(breadcrumb);
-    this.breadcrumbs$.emit(this.listBreadcrumb);
+    this.comportamiento.breadcrumbList = this.listBreadcrumb;
+    this.breadcrumbs$.emit(this.comportamiento);
   }
 
-  public getBreadcrumbs(): EventEmitter<Breadcrumb[]> {
+  public getBreadcrumbs(): EventEmitter<BreadcrumbComportamiento> {
     setTimeout(() => {
-      this.breadcrumbs$.emit(this.listBreadcrumb);
+      this.breadcrumbs$.emit(this.comportamiento);
     }, 0);
     return this.breadcrumbs$;
   }
@@ -31,5 +35,12 @@ export class BreadcrumbService {
 
   public removeBread(index: number) {
     this.listBreadcrumb.splice(index, 1);
+  }
+
+  public removeAllBread() {
+    this.listBreadcrumb = [];
+    this.comportamiento.breadcrumbList = this.listBreadcrumb;
+    this.comportamiento.btnAdd = false;
+    this.breadcrumbs$.emit(this.comportamiento);
   }
 }
