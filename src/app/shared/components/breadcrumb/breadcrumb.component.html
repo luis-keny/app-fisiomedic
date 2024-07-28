@@ -1,0 +1,14 @@
+<nav style="--bs-breadcrumb-divider: '>';">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" [ngClass]="{ 'active': isLastIndex($index) }"
+            *ngFor="let breadcrumb of breadcrumbs; let $index = index">
+            <ng-container *ngIf="isLastIndex($index); else route">
+                {{ breadcrumb.name }}
+            </ng-container>
+            <ng-template #route>
+                <a [routerLink]="breadcrumb.route" #route>{{ breadcrumb.name }}</a>
+            </ng-template>
+        </li>
+    </ol>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,142 @@
+section {
+    z-index: 9999;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.3rem;
+}
+
+li {
+    display: grid;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    transition-duration: .3s;
+    animation: appear .3s forwards;
+    -webkit-animation: appear .3s forwards;
+}
+
+li:has(input:checked) {
+    animation: disappear .3s forwards;
+    -webkit-animation: disappear .3s forwards;
+}
+
+li.error {
+    background-color: var(--color-red);
+}
+
+li.success {
+    background-color: var(--color-green);
+}
+
+li.warning {
+    background-color: #dacb00;
+}
+
+li.info {
+    background-color: #1F6FFF;
+}
+
+li>div {
+    background: #ffffff3f;
+    position: relative;
+    height: 8px;
+}
+
+.loading {
+    position: absolute;
+    height: 100%;
+    background: #0000006e;
+    animation: timer 2.5s forwards;
+    -webkit-animation: timer 2.5s forwards;
+}
+
+article {
+    color: #fff;
+    width: 300px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+article div,
+article label {
+    display: grid;
+    align-items: center;
+    padding: 0.6rem;
+}
+
+span {
+    user-select: none;
+}
+
+.icon-close {
+    cursor: pointer;
+    transition-duration: .3s;
+}
+
+.icon-close:hover {
+    background: #ffffff33;
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+        transform: scale(0);
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        display: none;
+        transform: scale(0);
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        display: grid;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+    }
+}
+
+@keyframes timer {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}

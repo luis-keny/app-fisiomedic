@@ -1,0 +1,47 @@
+section {
+    height: 100vh;
+    display: flex;
+}
+
+#sidebar {
+    z-index: 99;
+    position: fixed;
+    transition: margin-left .5s;
+    -webkit-transition: margin-left .5s;
+    -moz-transition: margin-left .5s;
+    -ms-transition: margin-left .5s;
+    -o-transition: margin-left .5s;
+}
+
+section main {
+    padding: 1.25rem 2.5rem;
+    flex: 1 1 auto;
+    overflow-x: auto;
+    transition: padding-left .5s;
+    -webkit-transition: padding-left .5s;
+    -moz-transition: padding-left .5s;
+    -ms-transition: padding-left .5s;
+    -o-transition: padding-left .5s;
+}
+
+section.no-activate #sidebar {
+    margin-left: -100%;
+}
+
+section.activate #sidebar {
+    margin-left: 0%;
+}
+
+@media (width > 800px) {
+    section.no-activate #sidebar {
+        margin-left: -238px;
+    }
+
+    #sidebar {
+        flex: 0 0 auto;
+        width: 238px;
+        height: 100%;
+        height: auto;
+        position: relative;
+    }
+}

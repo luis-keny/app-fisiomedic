@@ -1,0 +1,38 @@
+<article id="container-user">
+    <div id="user">
+        <label #checkboxMenu>
+            <div id="profile">
+                <img src="/sidebar/foto.png" alt="">
+                <input type="checkbox" style="display: none;" [(ngModel)]="isActivateMenu">
+            </div>
+            <p>{{user.name}}</p>
+            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M7.18505 0.721748L4.23874 3.66805L1.29244 0.721748C1.22214 0.651445 1.13868 0.595678 1.04682 0.557631C0.954967 0.519583 0.856517 0.5 0.757094 0.5C0.657671 0.5 0.559222 0.519583 0.467367 0.557631C0.375512 0.595678 0.292051 0.651445 0.221748 0.721748C0.151445 0.792051 0.0956781 0.875512 0.0576305 0.967367C0.019583 1.05922 -7.40758e-10 1.15767 0 1.25709C7.4076e-10 1.35652 0.019583 1.45497 0.0576305 1.54682C0.0956781 1.63868 0.151445 1.72214 0.221748 1.79244L3.7072 5.27789C4.00334 5.57404 4.48174 5.57404 4.77789 5.27789L8.26333 1.79244C8.33373 1.72219 8.38958 1.63875 8.42768 1.54688C8.46579 1.45502 8.4854 1.35655 8.4854 1.25709C8.4854 1.15764 8.46579 1.05917 8.42768 0.967305C8.38958 0.875444 8.33373 0.791999 8.26333 0.721748C7.96719 0.433192 7.4812 0.425599 7.18505 0.721748Z"
+                    fill="#EDF7FF" />
+            </svg>
+        </label>
+        <nav id="menu" #menu>
+            <ul>
+                <li>
+                    <p><strong>Usuario:</strong> {{user.name}}</p>
+                    <p><strong>Rol:</strong> {{user.role}}</p>
+                </li>
+                <li id="cerrar-sesion">
+                    <a routerLink="/login">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15 4.00098H5V18.001C5 18.5314 5.21071 19.0401 5.58579 19.4152C5.96086 19.7903 6.46957 20.001 7 20.001H15M16 15.001L19 12.001M19 12.001L16 9.00098M19 12.001H9"
+                                stroke="#D7EBFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Cerrar sesion</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <label id="icon-view-sidebar" (click)="reactiveSidebar()"
+        [class]="{ 'active': isActivateSidebar, 'desactive': !isActivateSidebar }">
+        <span id="view-sidebar"></span>
+    </label>
+</article>

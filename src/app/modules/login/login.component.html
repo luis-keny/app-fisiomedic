@@ -21,7 +21,13 @@
                         formControlName="password">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                 </label>
-                <button type="submit" [disabled]="user.invalid">Iniciar sesión</button>
+                <button type="submit" [disabled]="user.invalid || isLoading">
+                    @if(isLoading) {
+                    Cargando...
+                    } @else {
+                    Iniciar sesión
+                    }
+                </button>
             </form>
             <ul>
                 <li><span id="facebook"></span></li>

@@ -1,0 +1,186 @@
+#container-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#user {
+    position: relative;
+}
+
+#user>label {
+    display: flex;
+    align-items: center;
+    padding-right: 0.5rem;
+    gap: 4px;
+    margin-bottom: 5px;
+    border-radius: 50px 16px 16px 50px;
+    -webkit-border-radius: 50px 16px 16px 50px;
+    -moz-border-radius: 50px 16px 16px 50px;
+    -ms-border-radius: 50px 16px 16px 50px;
+    -o-border-radius: 50px 16px 16px 50px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+#user>label>p {
+    color: var(--java-50);
+    user-select: none;
+    max-width: 100px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#user:has(#profile input:not(:checked)):active {
+    scale: 0.95;
+}
+
+#user:has(#profile input:not(:checked)) #menu {
+    display: none;
+}
+
+#user>label:has(#profile input:checked) {
+    background-color: var(--java-600);
+}
+
+#user:has(#profile input:checked)>p {
+    text-decoration: underline;
+}
+
+#user #profile {
+    position: relative;
+    overflow: hidden;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    background-color: var(--java-50);
+    border: 1px solid var(--java-200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+#user #profile img {
+    height: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+#icon-view-sidebar {
+    display: flex;
+    background: var(--java-800);
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    border-radius: 0.6rem;
+    -webkit-border-radius: 0.6rem;
+    -moz-border-radius: 0.6rem;
+    -ms-border-radius: 0.6rem;
+    -o-border-radius: 0.6rem;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    cursor: pointer;
+}
+
+#icon-view-sidebar:hover {
+    background: var(--java-900);
+}
+
+#icon-view-sidebar:active {
+    scale: 0.95;
+}
+
+#icon-view-sidebar.active {
+    position: inherit;
+}
+
+#icon-view-sidebar.desactive {
+    position: fixed;
+    left: 0.25rem;
+    top: 0.25rem;
+}
+
+#icon-view-sidebar span {
+    display: block;
+    background-image: url('/sidebar/icons-sidebar.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+#menu {
+    width: max-content;
+    position: absolute;
+    background-color: var(--java-800);
+    border: solid 0.5px var(--java-200);
+    color: var(--java-50);
+    padding: 0.5rem;
+    top: 110%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+#menu li {
+    padding: 0.3rem 0.8rem;
+}
+
+#menu li:nth-child(n+2) {
+    border-top: solid 0.5px var(--java-200);
+}
+
+#cerrar-sesion a {
+    font-size: 12px;
+    color: var(--java-50);
+}
+
+#cerrar-sesion a:hover {
+    background: var(--java-900);
+}
+
+#cerrar-sesion a:active {
+    scale: 0.95;
+    background: var(--java-800);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.2rem;
+}
+
+ul li {
+    display: grid;
+}
+
+ul li a {
+    color: var(--java-50);
+    padding: 0.3rem 0.8rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
