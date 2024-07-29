@@ -1,0 +1,16 @@
+.container {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+main {
+    display: grid;
+    gap: 0.5rem;
+}
+
+@media(width >=768px) {
+    .container {
+        grid-template-columns: auto 1fr;
+    }
+}

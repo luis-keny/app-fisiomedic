@@ -3,11 +3,13 @@ import { Breadcrumb } from '../../core/index.model.system';
 import { BreadcrumbService } from '../../core/index.service.triggers';
 import { RouterLink, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CardPersonaComponent } from './card-persona/card-persona.component';
+import { GrupoDiagnosticoComponent } from './grupo-diagnostico/grupo-diagnostico.component';
 
 @Component({
   selector: 'app-cliente-hc',
   standalone: true,
-  imports: [RouterLink, RouterModule],
+  imports: [RouterLink, RouterModule, CardPersonaComponent, GrupoDiagnosticoComponent],
   templateUrl: './cliente-hc.component.html',
   styleUrl: './cliente-hc.component.css'
 })
