@@ -1,0 +1,93 @@
+section {
+    color: var(--java-950);
+}
+
+section>div {
+    display: flex;
+    gap: 0.625rem;
+    flex-direction: column-reverse;
+}
+
+.diagnostico article {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+.diagnostico article div {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.diagnostico article div p {
+    text-wrap: nowrap;
+}
+
+.diagnostico>div {
+    display: flex;
+    gap: 0.625rem;
+}
+
+button {
+    user-select: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+    transition: background-color .3s, scale .3s;
+    -webkit-transition: background-color .3s, scale .3s;
+    -moz-transition: background-color .3s, scale .3s;
+    -ms-transition: background-color .3s, scale .3s;
+    -o-transition: background-color .3s, scale .3s;
+}
+
+button:active {
+    scale: 0.95;
+}
+
+.btn_edit {
+    background-color: var(--java-600);
+    border: none;
+    color: var(--java-50);
+}
+
+.btn_edit:hover {
+    background-color: var(--java-700);
+}
+
+.btn_edit:active {
+    background-color: var(--java-800);
+}
+
+.btn_delete {
+    background-color: var(--java-50);
+    border: 0.1rem solid var(--java-600);
+    color: var(--java-600);
+}
+
+.btn_delete:hover {
+    background-color: var(--java-200);
+}
+
+.btn_delete:active {
+    background-color: var(--java-300);
+}
+
+@media (width >=768px) {
+    section>div {
+        display: grid;
+        gap: 0.625rem;
+        grid-template-columns: 1fr auto;
+    }
+
+    .diagnostico article {
+        margin-top: 0.8rem;
+    }
+}

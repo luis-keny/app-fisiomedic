@@ -1,0 +1,31 @@
+<section>
+    <div>
+        <h3>Sesiones</h3><button class="btn_add">Nuevo</button>
+    </div>
+    <div class="container-table">
+        <div class="table">
+            <div class="table-header" #header>
+                <strong>No.</strong>
+                <strong>tipo</strong>
+                <strong class="descripcion">Descripción</strong>
+                <strong>Fecha</strong>
+                <strong>Hora</strong>
+                <strong>Asistio</strong>
+            </div>
+            <div class="table-body">
+                <div *ngFor="let sesion of sesiones; let i = index" class="table-body-row">
+                    <p>{{ i+1 }}</p>
+                    <p>Consulta</p>
+                    <p class="descripcion">Se diagnostico una irritacion en la parte de atras de la espalda</p>
+                    <p class="no-wrap">15-07-2024</p>
+                    <p class="no-wrap">02:00</p>
+                    <p class="asistencia check"></p>
+                    <p class="table_actions">
+                        <span class="icon_edit"></span>
+                        <span class="icon_delete"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
