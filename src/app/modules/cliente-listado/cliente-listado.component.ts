@@ -8,7 +8,7 @@ import { CardClienteComponent } from './card-cliente/card-cliente.component';
   standalone: true,
   imports: [RouterLink, CardClienteComponent],
   templateUrl: './cliente-listado.component.html',
-  styleUrls: ['./cliente-listado.component.css', '/src/app/shared/css/header-views.css']
+  styleUrls: ['./cliente-listado.component.css', '../../shared/css/header-views.css']
 })
 export class ClienteListadoComponent implements AfterViewInit {
   constructor(

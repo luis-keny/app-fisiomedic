@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.css', '/src/app/shared/css/header-views.css']
+  styleUrls: ['./agenda.component.css', '../../shared/css/header-views.css']
 })
 export class AgendaComponent {
   date: String = new Date().toISOString().split('T')[0];

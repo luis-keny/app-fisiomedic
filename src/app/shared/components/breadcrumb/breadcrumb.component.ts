@@ -8,7 +8,7 @@ import { BreadcrumbService } from '../../../core/index.service.triggers';
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.css', '/src/app/shared/css/header-views.css'],
+  styleUrls: ['./breadcrumb.component.css', '../../css/header-views.css'],
   standalone: true,
   imports: [CommonModule, RouterModule],
 })
