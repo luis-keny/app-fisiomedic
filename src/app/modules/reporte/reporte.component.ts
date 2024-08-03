@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { GraficoPagosComponent } from './grafico-pagos/grafico-pagos.component';
 
 @Component({
   selector: 'app-reporte',
   standalone: true,
-  imports: [],
+  imports: [GraficoPagosComponent],
   templateUrl: './reporte.component.html',
-  styleUrl: './reporte.component.css'
+  styleUrl: './reporte.component.css',
 })
 export class ReporteComponent {
 

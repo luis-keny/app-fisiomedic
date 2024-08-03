@@ -1,0 +1,23 @@
+<section>
+    <header>
+        <h1>Historial de ingresos</h1>
+        <div>
+            <button>Dias</button>
+            <button>Semana</button>
+            <button class="active">Mes</button>
+            <button>Año</button>
+        </div>
+    </header>
+    <main #mainContainer>
+        <ul #list>
+            <li *ngFor="let mount of labelYList">{{mount}}</li>
+        </ul>
+        <div>
+            <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+                [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                [roundEdges]="false">
+            </ngx-charts-bar-vertical>
+        </div>
+    </main>
+</section>

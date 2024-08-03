@@ -1,0 +1,95 @@
+section {
+    position: relative;
+    color: var(--java-950);
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+main.primary-section {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+}
+
+.container-cards {
+    overflow-x: scroll;
+    display: flex;
+    gap: 1rem;
+}
+
+.container-cards article {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    padding: 1.1rem 0.8rem;
+    border: 1px solid var(--java-800);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+.container-cards article::after {
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('/reporte/icons-reporte.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.container-cards article.card-ingreso-total::after {
+    background-position: 0 -1.5rem;
+}
+
+.container-cards article.card-ultimo-ingreso::after {
+    background-position: 0 -3rem;
+}
+
+.container-cards article.card-cant-pacientes::after {
+    background-position: 0 -4.5rem;
+}
+
+.container-cards article.card-horas-trabajadas::after {
+    background-position: 0 0rem;
+}
+
+.container-cards article div>* {
+    text-wrap: nowrap;
+}
+
+.container-cards article div h4 {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--java-800);
+}
+
+.container-cards article div h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+@media (width >=668px) {
+    .container-cards {
+        overflow-x: initial;
+        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width >=1024px) {
+    main.primary-section {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 60% auto;
+    }
+
+    .container-cards {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
