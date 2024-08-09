@@ -64,6 +64,7 @@ ul {
 }
 
 li {
+    text-wrap: nowrap;
     font-size: 0.8rem;
     padding: 0.25rem 0.3rem;
     color: var(--java-50);
@@ -72,6 +73,13 @@ li {
     -moz-border-radius: 0.25rem;
     -ms-border-radius: 0.25rem;
     -o-border-radius: 0.25rem;
+}
+
+li p {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    max-width: 14rem;
+    overflow: hidden;
 }
 
 .dni {

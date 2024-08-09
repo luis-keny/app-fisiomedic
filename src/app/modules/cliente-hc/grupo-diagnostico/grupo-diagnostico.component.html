@@ -2,10 +2,10 @@
     <header>
         <div>
             <h3>
-                <a routerLink="/home/cliente/hc/diagnostico">Dolor de espalda</a>
-                <span class="span_money">100</span>
+                <a routerLink="/home/cliente/hc/diagnostico">{{ diagnostico.diagnostico }}</a>
+                <span class="span_money">{{ diagnostico.monto_total }}</span>
             </h3>
-            <p>Sufrio un dolor de espalda por estar mucho tiempo en la silla chambeando para moises</p>
+            <p>{{ diagnostico.observacion }}</p>
         </div>
         <label>
             <svg width="24" height="18" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">

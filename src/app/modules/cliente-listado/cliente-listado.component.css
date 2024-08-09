@@ -4,10 +4,32 @@ section {
     gap: 1rem;
 }
 
-.container {
+.container:not(:has(> .empty)) {
     display: grid;
     gap: 0.5rem;
     grid-template-columns: repeat(auto-fit, 16rem);
-    /* grid-template-rows: repeat(auto-fit, 16rem); */
     justify-content: center;
+}
+
+main .empty {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: auto 1fr;
+    padding: 1rem;
+}
+
+main .empty svg {
+    width: 10rem;
+    height: auto;
+    margin: 0 auto;
+}
+
+main .empty svg path {
+    fill: var(--java-800);
+}
+
+main h2 {
+    font-size: 2rem;
+    color: var(--java-950);
+    text-align: center;
 }

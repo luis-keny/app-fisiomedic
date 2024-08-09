@@ -20,7 +20,11 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private notifySrv: NotifyService
-  ) { }
+  ) {
+    setTimeout(() => {
+      localStorage.clear();
+    }, 0);
+  }
 
   onSubmit() {
     this.isLoading = true;

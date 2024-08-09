@@ -51,7 +51,9 @@ li {
 
 li.correo,
 li.telefono,
-li.dirreccion {
+li.dirreccion,
+li.residencia,
+li.referencia {
     display: flex;
     align-items: center;
     gap: 0.1rem;
@@ -59,7 +61,9 @@ li.dirreccion {
 
 li.correo::before,
 li.telefono::before,
-li.dirreccion::before {
+li.dirreccion::before,
+li.residencia::before,
+li.referencia::before {
     content: '';
     width: 0.75rem;
     height: 0.75rem;
@@ -69,15 +73,23 @@ li.dirreccion::before {
 }
 
 li.correo:before {
-    background-position: 0 0px;
+    background-position: 0 -24px;
 }
 
 li.telefono:before {
-    background-position: 0 -12px;
+    background-position: 0 0px;
 }
 
 li.dirreccion:before {
-    background-position: 0 -24px;
+    background-position: 0 -48px;
+}
+
+li.residencia:before {
+    background-position: 0 -36px;
+}
+
+li.referencia:before {
+    background-position: 0 -12px;
 }
 
 p {
