@@ -20,6 +20,11 @@
     -moz-border-radius: 0.25rem;
     -ms-border-radius: 0.25rem;
     -o-border-radius: 0.25rem;
+    transition: box-shadow .3s;
+    -webkit-transition: box-shadow .3s;
+    -moz-transition: box-shadow .3s;
+    -ms-transition: box-shadow .3s;
+    -o-transition: box-shadow .3s;
 }
 
 .header_view label.input_search {
@@ -41,6 +46,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
+}
+
+.header_view label:has(input:focus) {
+    box-shadow: 0 0 0 1px var(--java-50), 0 0 0 3px var(--java-600);
 }
 
 .header_view label>span {
