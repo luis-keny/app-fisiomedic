@@ -1,5 +1,5 @@
 <article>
-    <figure>
+    <figure [classList]="persona.genero ? 'masculino' : 'femenino'">
         <img src="/shared/icon-person.png" alt="icono de persona">
     </figure>
     <div>
@@ -31,8 +31,8 @@
         </ul>
         <p><strong>otros contactos</strong></p>
         <ul>
-            @for (item of persona.telefonos; track $index) {
-            <li><strong>Telefono {{ $index + 1 }}:</strong> {{ item }}</li>
+            @for (telefono of persona.telefonosDTO; track $index) {
+            <li><strong>Telefono {{ $index + 1 }}:</strong> {{ telefono.telefono }}</li>
             }
         </ul>
         <button class="btn_edit" (click)="crearCliente()">Editar perfil</button>

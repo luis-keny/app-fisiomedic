@@ -1,13 +1,18 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { PersonaHc } from '../../../core/index.model.api';
+import { PersonaHc, Telefono } from '../../../core/index.model.api';
 import { PersonaService } from '../../../core/index.service.http';
 import { ModalService, ValueTransferService, NotifyService } from '../../../core/index.service.triggers';
+import { CommonModule } from '@angular/common';
 
 type PersonaForm = {
-  [K in keyof PersonaHc]: FormControl<PersonaHc[K] | null>;
+  [K in keyof PersonaHc]: K extends 'telefonosDTO'
+  ? FormArray<FormGroup<{ idtf: FormControl<number | null | undefined>; telefono: FormControl<number | null | undefined> }>>
+  : K extends 'diagnosticosDTO'
+  ? FormArray<FormGroup<{ [key: string]: FormControl<any> }>>
+  : FormControl<PersonaHc[K] | null>;
 };
 type attribute = 'genero' | 'tipo_documento'
 
@@ -15,7 +20,7 @@ type attribute = 'genero' | 'tipo_documento'
 @Component({
   selector: 'app-crear-cliente',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './crear-cliente.component.html',
   styleUrl: './crear-cliente.component.css'
 })
@@ -30,7 +35,9 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
     private modalSrv: ModalService,
     private valueSrv: ValueTransferService,
     private notifySrv: NotifyService,
-    private personaSrv: PersonaService
+    private personaSrv: PersonaService,
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.personForm = this.inicializarForm(this.persona);
   }
@@ -41,6 +48,7 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
         if (p) {
           this.persona = p;
           this.personForm = this.inicializarForm(p);
+          console.log(this.persona);
         }
       });
     }, 0);
@@ -67,10 +75,19 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
       correo: new FormControl(persona.correo),
       telefono: new FormControl(persona.telefono),
       domicilio: new FormControl(persona.domicilio),
-      // falta diseño
       residencia: new FormControl(persona.residencia),
       referencia: new FormControl(persona.referencia),
+      telefonosDTO: new FormArray(this.inicializarTelefonos(persona.telefonosDTO)),
     });
+  }
+
+  private inicializarTelefonos(telefonos?: Telefono[]) {
+    if (!telefonos) return [];
+
+    return telefonos.map(tel => new FormGroup({
+      idtf: new FormControl(tel.idtf),
+      telefono: new FormControl(tel.telefono)
+    }));
   }
 
   public onSubmit() {
@@ -82,7 +99,7 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
 
     const idAux = this.persona.idpersona ?? null;
     this.persona = this.personForm.getRawValue() as PersonaHc;
-
+    console.log(this.persona);
     if (idAux === null) {
       this.guardar();
     } else {
@@ -132,5 +149,23 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
 
   private cerrarModal() {
     this.modalSrv.closeModal();
+  }
+
+  get telefonos(): FormArray {
+    return this.personForm.get('telefonosDTO') as FormArray;
+  }
+
+  public agregarTelefono() {
+    // this.telefonos.push(this.fb.control(""));
+    const telefonos = this.personForm.get('telefonosDTO') as FormArray;
+    telefonos.push(new FormGroup({
+      idtf: new FormControl<number | null | undefined>(null),
+      telefono: new FormControl<number | null | undefined>(null)
+    }));
+    this.cdr.detectChanges(); // Forzar la detección de cambios
+  }
+
+  public eliminarTelefono(index: number) {
+    this.telefonos.removeAt(index);
   }
 }

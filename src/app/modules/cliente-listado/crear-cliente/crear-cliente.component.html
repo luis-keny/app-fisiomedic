@@ -99,25 +99,17 @@
 
         <div class="form-group">
             <label>Otros Teléfonos</label>
-            <div class="other-phones">
-                <div>
-                    <input type="tel" placeholder="999654542">
-                    <span class="icon-delete"></span>
-                </div>
-                <div>
-                    <input type="tel" placeholder="999654542">
-                    <span class="icon-delete"></span>
-                </div>
-                <div>
-                    <input type="tel" placeholder="999654542">
-                    <span class="icon-delete"></span>
-                </div>
-                <div>
-                    <input type="tel" placeholder="999654542">
-                    <span class="icon-delete"></span>
-                </div>
+            <div class="other-phones" formArrayName="telefonosDTO">
+                @if (telefonos!== undefined) {
+                    @if (telefonos.length > 0) {
+                        <div *ngFor="let telefono of telefonos.controls; let i = index" [formGroupName]="i">
+                            <input type="number" placeholder="999654542" formControlName="telefono">
+                            <span class="icon-delete" (click)="eliminarTelefono(i)"></span>
+                        </div>   
+                    }
+                }
             </div>
-            <button type="button" class="add-phone-btn">Agregar Otro Teléfono</button>
+            <button type="button" class="add-phone-btn" (click)="agregarTelefono()">Agregar Otro Teléfono</button>
         </div>
     </div>
 

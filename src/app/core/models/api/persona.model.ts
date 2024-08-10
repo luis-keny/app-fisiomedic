@@ -20,6 +20,6 @@ export interface Persona {
 }
 
 export interface PersonaHc extends Persona {
-    telefonos?: Telefono[]
+    telefonosDTO?: Telefono[]
     diagnosticosDTO?: Diagnostico[]
 }

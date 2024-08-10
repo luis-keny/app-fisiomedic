@@ -38,7 +38,14 @@ figure {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+figure.masculino {
     background: linear-gradient(180deg, #0400e9c7 0%, #030083c7 100%);
+}
+
+figure.femenino {
+    background: linear-gradient(180deg, #E900E0c7 0%, #790083c7 100%);
 }
 
 summary {
