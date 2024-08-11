@@ -1,0 +1,81 @@
+.container-interno{
+    border: 1px solid  var(--java-950);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+.nombre-consulta{
+    margin: 10px;
+    display: flex;
+     align-items: center; 
+
+}
+
+button{
+    margin: 3px;
+    border: none;
+    border-radius: 3px;
+   padding: 3px;
+   margin: 3px;
+}
+.consulta-button{
+    margin-left: 10px;
+}
+.button-1{
+    background-color: var(--java-100);
+    color: var(--java-800);
+
+}
+
+
+.div-hora{
+    margin-right: 20px;
+    color: var(--java-950);
+}
+
+
+.check-nombre{
+
+    display: flex;
+    
+
+}
+
+.material-symbols-outlined{
+    color: green;
+    padding-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size:  30px;
+   
+}
+
+.div-botones{
+    margin-top: -13px;
+
+}
+
+.button-2{
+    background-color: #E97E00e6;
+    color: var(--java-50);
+}
+.button-3{
+    background-color: #12b203e6;
+    color: var(--java-50);
+}
+.button-4{
+    background-color: #e91b00e6;
+    color: var(--java-50);
+}
+
+.button-5{
+    background-color: #BB00E9e6;
+    color: var(--java-50);
+}
+
+.nombre-titulo{
+    color: var(--java-950);
+}
