@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
+import { verificarObjetoGuard } from '../../core/guard/verificar-objeto.guard';
 
 export const routesHome: Routes = [
     {
@@ -21,7 +22,9 @@ export const routesHome: Routes = [
                     },
                     {
                         path: 'hc',
-                        loadComponent: () => import('../cliente-hc/cliente-hc.component').then(m => m.ClienteHcComponent)
+                        loadComponent: () => import('../cliente-hc/cliente-hc.component').then(m => m.ClienteHcComponent),
+                        canActivate: [verificarObjetoGuard],
+                        data: { value: 'idPersona' }
                     },
                     {
                         path: 'hc/diagnostico',

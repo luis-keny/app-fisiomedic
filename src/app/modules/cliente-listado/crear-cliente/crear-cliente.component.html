@@ -1,0 +1,120 @@
+<form class="profile-form" [formGroup]="personForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+        <div class="form-group">
+            <label class="required" for="name">Nombre</label>
+            <input id="name" type="text" placeholder="Alvaro..." formControlName="nombre"
+                [classList]="personForm.get('nombre')?.invalid && errorSubmitted ? 'invalid': ''" required>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="name">Apellido</label>
+            <input id="name" type="text" placeholder="Maguiña..." formControlName="apellido"
+                [classList]="personForm.get('apellido')?.invalid && errorSubmitted ? 'invalid': ''" required>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="gender">Género</label>
+            <select name="gender" id="gender"
+                [classList]="personForm.get('genero')?.invalid && errorSubmitted ? 'invalid': ''"
+                (change)="changeDocumentType($event, 'genero')" formControlName="genero" required>
+                <option [value]="null" selected disabled>Seleccionar</option>
+                <option [value]="true">Masculino</option>
+                <option [value]="false">Femenino</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="document">Tipo documento</label>
+            <select name="document" id="document" formControlName="tipo_documento"
+                [classList]="personForm.get('tipo_documento')?.invalid && errorSubmitted ? 'invalid': ''"
+                (change)="changeDocumentType($event, 'tipo_documento')" required>
+                <option value="null" selected disabled>Seleccionar</option>
+                <option value="true" selected>DNI</option>
+                <option value="false">Otros</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="dni">Nro. Documento</label>
+            <input id="dni" type="text" placeholder="77777777" formControlName="ndoc_documento"
+                [classList]="personForm.get('ndoc_documento')?.invalid && errorSubmitted ? 'invalid' : ''" required>
+        </div>
+
+        <div class="form-group">
+            <label for="birthDate">Fecha de Nacimiento</label>
+            <input id="birthDate" type="date" formControlName="fecha_nac">
+        </div>
+
+        <div class="form-group">
+            <label for="birthPlace">Lugar de Nacimiento</label>
+            <input id="birthPlace" type="text" placeholder="Hospital de vitarte" formControlName="lugar_nac">
+        </div>
+
+        <div class="form-group">
+            <label for="maritalStatus">Estado Civil</label>
+            <select name="maritalStatus" id="maritalStatus" formControlName="estado_civil">
+                <option [value]="null" selected disabled>Seleccionar</option>
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="divorciado">Divorciado</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="childrenCount">Número de Hijos</label>
+            <input id="childrenCount" type="number" placeholder="4" min="0" formControlName="n_hijos">
+        </div>
+    </div>
+
+    <div class="form-section">
+        <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input id="email" type="email" placeholder="example@gmail.com" formControlName="correo">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input id="phone" type="number" placeholder="999654542" formControlName="telefono">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Dirección</label>
+            <input id="address" type="text" placeholder="Mz C. Lt14 La era" formControlName="domicilio">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Residencia</label>
+            <input id="address" type="text" placeholder="Lugar temporal donde vive" formControlName="residencia">
+        </div>
+
+        <div class="form-group">
+            <label for="reference">Referencia</label>
+            <select name="reference" id="reference" formControlName="referencia">
+                <option [value]="null" selected disabled>Seleccionar</option>
+                @for (ref of referencias; track $index) {
+                <option [value]="ref">{{ref}}</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Otros Teléfonos</label>
+            <div class="other-phones" formArrayName="telefonosDTO">
+                @if (telefonos!== undefined) {
+                    @if (telefonos.length > 0) {
+                        <div *ngFor="let telefono of telefonos.controls; let i = index" [formGroupName]="i">
+                            <input type="number" placeholder="999654542" formControlName="telefono">
+                            <span class="icon-delete" (click)="eliminarTelefono(i)"></span>
+                        </div>   
+                    }
+                }
+            </div>
+            <button type="button" class="add-phone-btn" (click)="agregarTelefono()">Agregar Otro Teléfono</button>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button class="btn_save" type="submit">Guardar</button>
+        <button class="btn_cancel" type="button" (click)="cancel()">Cancelar</button>
+    </div>
+</form>

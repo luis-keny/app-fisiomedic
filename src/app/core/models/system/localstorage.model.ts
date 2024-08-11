@@ -1,0 +1,1 @@
+export type LOCAL_STORAGE = 'idPersona' | 'idDiagnostico' | 'idSesion'

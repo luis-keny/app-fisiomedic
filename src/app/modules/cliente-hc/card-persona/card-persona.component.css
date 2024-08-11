@@ -14,7 +14,14 @@ figure {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+figure.masculino {
     background: linear-gradient(180deg, #0400e9c7 0%, #030083c7 100%);
+}
+
+figure.femenino {
+    background: linear-gradient(180deg, #E900E0c7 0%, #790083c7 100%);
 }
 
 div {
@@ -51,7 +58,9 @@ li {
 
 li.correo,
 li.telefono,
-li.dirreccion {
+li.dirreccion,
+li.residencia,
+li.referencia {
     display: flex;
     align-items: center;
     gap: 0.1rem;
@@ -59,7 +68,9 @@ li.dirreccion {
 
 li.correo::before,
 li.telefono::before,
-li.dirreccion::before {
+li.dirreccion::before,
+li.residencia::before,
+li.referencia::before {
     content: '';
     width: 0.75rem;
     height: 0.75rem;
@@ -69,15 +80,23 @@ li.dirreccion::before {
 }
 
 li.correo:before {
-    background-position: 0 0px;
+    background-position: 0 -24px;
 }
 
 li.telefono:before {
-    background-position: 0 -12px;
+    background-position: 0 0px;
 }
 
 li.dirreccion:before {
-    background-position: 0 -24px;
+    background-position: 0 -48px;
+}
+
+li.residencia:before {
+    background-position: 0 -36px;
+}
+
+li.referencia:before {
+    background-position: 0 -12px;
 }
 
 p {

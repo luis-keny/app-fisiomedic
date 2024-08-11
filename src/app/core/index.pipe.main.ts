@@ -1,0 +1,1 @@
+export * from './pipe/filtrar-persona.pipe';

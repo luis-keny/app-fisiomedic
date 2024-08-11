@@ -1,29 +1,41 @@
 <article>
-    <figure>
+    <figure [classList]="persona.genero ? 'masculino' : 'femenino'">
         <img src="/shared/icon-person.png" alt="icono de persona">
     </figure>
     <div>
-        <h5>Alvaro Cuti Morales Mostacero</h5>
+        <h5>{{ persona.nombre }} {{ persona.apellido }}</h5>
         <ul>
-            <li><strong>Genero:</strong> Masculino</li>
-            <li><strong>Dni:</strong> 8975720</li>
-            <li><strong>Fecha nac:</strong> 17-02-2000</li>
-            <li><strong>Lugar nac:</strong> Hospital de vitarte</li>
-            <li><strong>Estado civil:</strong> viudo</li>
-            <li><strong>Nro hijos:</strong> 4</li>
+            <li><strong>Genero:</strong> {{ persona.genero ? 'Masculino' : 'Femenino' }}</li>
+            <li><strong>{{ persona.tipo_documento ? 'DNI' : 'Otro' }}:</strong> {{ persona.ndoc_documento }}</li>
+            <li><strong>Fecha nac:</strong> {{ limitarFechaNacimiento() }}</li>
+            <li><strong>Lugar nac:</strong> {{ persona.lugar_nac }}</li>
+            <li><strong>Estado civil:</strong> {{ persona.estado_civil }}</li>
+            <li><strong>Nro hijos:</strong> {{ persona.n_hijos }}</li>
         </ul>
         <ul>
-            <li class="correo">{{ 'alvaroandmoises@gmail.com' }}</li>
-            <li class="telefono">999654542</li>
-            <li class="dirreccion">Mz C. Lt14 La era</li>
+            @if (persona.correo) {
+            <li class="correo">{{ persona.correo }}</li>
+            }
+            @if (persona.telefono) {
+            <li class="telefono">{{ persona.telefono }}</li>
+            }
+            @if (persona.domicilio) {
+            <li class="dirreccion">{{ persona.domicilio }}</li>
+            }
+            @if (persona.residencia) {
+            <li class="residencia">{{ persona.residencia }}</li>
+            }
+            @if (persona.referencia) {
+            <li class="referencia">{{ persona.referencia }}</li>
+            }
         </ul>
         <p><strong>otros contactos</strong></p>
         <ul>
-            <li><strong>Telefono 1:</strong> 999654542</li>
-            <li><strong>Telefono 2:</strong> 999654542</li>
-            <li><strong>Telefono 3:</strong> 999654542</li>
+            @for (telefono of persona.telefonosDTO; track $index) {
+            <li><strong>Telefono {{ $index + 1 }}:</strong> {{ telefono.telefono }}</li>
+            }
         </ul>
-        <button class="btn_edit">Editar perfil</button>
-        <button class="btn_delete">Eliminar</button>
+        <button class="btn_edit" (click)="crearCliente()">Editar perfil</button>
+        <button class="btn_delete" (click)="deletePersona()">Eliminar</button>
     </div>
 </article>

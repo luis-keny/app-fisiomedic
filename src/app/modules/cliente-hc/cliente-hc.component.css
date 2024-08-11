@@ -9,6 +9,29 @@ main {
     gap: 0.5rem;
 }
 
+main .empty {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: auto 1fr;
+    padding: 1rem;
+}
+
+main .empty svg {
+    width: 10rem;
+    height: auto;
+    margin: 0 auto;
+}
+
+main .empty svg path {
+    fill: var(--java-800);
+}
+
+main h2 {
+    font-size: 2rem;
+    color: var(--java-950);
+    text-align: center;
+}
+
 @media(width >=768px) {
     .container {
         grid-template-columns: auto 1fr;

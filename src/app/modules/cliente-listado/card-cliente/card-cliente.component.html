@@ -1,14 +1,38 @@
 <article>
-    <figure>
+    <figure [classList]="persona.genero ? 'masculino' : 'femenino'">
         <img src="/shared/icon-person.png" alt="icono de persona">
     </figure>
     <summary>
-        <h5>Alvaro Cuti Morales Mostacero</h5>
+        @if (persona.apellido == null && persona.nombre == null) {
+        <h5 style="color: red;">Sin nombre!!</h5>
+        } @else {
+        <h5>{{ persona.nombre }} {{ persona.apellido }}</h5>
+        }
         <ul>
-            <li class="dni"><strong>Dni:</strong> 8975720</li>
-            <li class="telefono"><strong>Telefono:</strong> 999654542</li>
-            <li class="correo"><strong>Correo:</strong> {{ 'alvaroandmoises@gmail.com' }}</li>
-            <li class="edad"><strong>Edad:</strong> 20</li>
+            @if (persona.ndoc_documento != null) {
+            <li class="dni">
+                <p><strong>Dni:</strong> {{ persona.ndoc_documento }}</p>
+            </li>
+            }
+            @if (persona.telefono != null) {
+            <li class="telefono">
+                <p><strong>Telefono:</strong> {{ persona.telefono }}</p>
+            </li>
+            }
+            @if (persona.correo != null) {
+            <li class="correo">
+                <p>
+                    <strong>Correo:</strong> {{ persona.correo }}
+                </p>
+            </li>
+            }
+            @if (persona.fecha_nac != null || persona.fecha_nac != undefined) {
+            <li class="edad">
+                <p>
+                    <strong>Edad:</strong> {{calcularEdad()}}
+                </p>
+            </li>
+            }
         </ul>
     </summary>
 </article>

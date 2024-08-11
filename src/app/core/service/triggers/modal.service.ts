@@ -1,4 +1,5 @@
-import { Injectable, Type, ComponentRef, EnvironmentInjector, ViewContainerRef } from '@angular/core';
+import { Injectable, ComponentRef, EnvironmentInjector, ViewContainerRef } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { Modal } from '../../index.model.system';
 
@@ -12,7 +13,9 @@ export class ModalService {
     private environmentInjector: EnvironmentInjector
   ) { }
 
-  public openModal(viewContainerRef: ViewContainerRef, modalConfig: Modal) {
+  private modalCloseSubject = new Subject<any>();
+
+  public openModal(viewContainerRef: ViewContainerRef, modalConfig: Modal): Observable<any> {
     this.modalRef = viewContainerRef.createComponent(ModalComponent, {
       environmentInjector: this.environmentInjector
     });
@@ -26,12 +29,17 @@ export class ModalService {
     document.body.appendChild(this.modalRef.location.nativeElement);
 
     this.modalRef.instance.setComponent(component);
+
+    return this.modalCloseSubject.asObservable();
   }
 
-  public closeModal() {
+  public closeModal(result?: any) {
     if (this.modalRef) {
       this.modalRef.destroy();
       this.modalRef = null;
+      this.modalCloseSubject.next(result);
+      this.modalCloseSubject.complete();
+      this.modalCloseSubject = new Subject<any>();
     }
   }
 }
