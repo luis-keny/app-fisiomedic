@@ -21,9 +21,10 @@ export class LoginComponent {
     private router: Router,
     private notifySrv: NotifyService
   ) {
-    setTimeout(() => {
+    const isBrowser = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+    if (isBrowser) {
       localStorage.clear();
-    }, 0);
+    }
   }
 
   onSubmit() {
