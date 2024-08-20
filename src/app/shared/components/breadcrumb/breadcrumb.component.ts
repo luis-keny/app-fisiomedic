@@ -38,4 +38,8 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   public isLastIndex(index: number): boolean {
     return index === this.breadcrumbs.length - 1;
   }
+
+  public activateBtn() {
+    this.breadcrumbSrv.activateBtn$.emit(true);
+  }
 }

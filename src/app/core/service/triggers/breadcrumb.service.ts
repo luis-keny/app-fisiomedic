@@ -5,6 +5,7 @@ import { Breadcrumb, BreadcrumbComportamiento } from '../../index.model.system';
   providedIn: 'root'
 })
 export class BreadcrumbService {
+  public activateBtn$ = new EventEmitter<boolean>();
   private listBreadcrumb: Breadcrumb[] = []
   private breadcrumbs$: EventEmitter<BreadcrumbComportamiento> = new EventEmitter();
   private comportamiento: BreadcrumbComportamiento = { breadcrumbList: [] }
