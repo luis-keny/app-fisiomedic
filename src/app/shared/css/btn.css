@@ -1,0 +1,47 @@
+.btn {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color .3s;
+}
+
+.btn:active {
+    scale: 0.95;
+}
+
+.btn.text-xl {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn.btn-primary {
+    background-color: var(--java-600);
+    border: none;
+    color: var(--java-50);
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--java-700);
+}
+
+.btn.btn-primary:active {
+    background-color: var(--java-800);
+}
+
+.btn.btn-outline {
+    background-color: var(--java-50);
+    border: 0.1rem solid var(--java-600);
+    color: var(--java-600);
+}
+
+.btn.btn-outline:hover {
+    background-color: var(--java-100);
+    border-color: var(--java-700);
+    color: var(--java-700);
+}
+
+.btn.btn-outline:active {
+    background-color: var(--java-200);
+    border-color: var(--java-800);
+    color: var(--java-800);
+}

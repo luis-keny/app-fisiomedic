@@ -1,3 +1,5 @@
+@import url('./btn.css');
+
 .header_view {
     display: flex;
     justify-content: space-between;
@@ -81,26 +83,12 @@
 }
 
 .btn_add {
-    background-color: var(--java-600);
-    color: var(--java-50);
     padding: 0.5rem 0.75rem;
     font-size: 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.25rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 0.25rem;
-    -webkit-border-radius: 0.25rem;
-    -moz-border-radius: 0.25rem;
-    -ms-border-radius: 0.25rem;
-    -o-border-radius: 0.25rem;
-    transition: background-color .3s, scale .3s;
-    -webkit-transition: background-color .3s, scale .3s;
-    -moz-transition: background-color .3s, scale .3s;
-    -ms-transition: background-color .3s, scale .3s;
-    -o-transition: background-color .3s, scale .3s;
 }
 
 .btn_add::before {
@@ -112,13 +100,4 @@
     width: 24px;
     height: 24px;
     display: block;
-}
-
-.btn_add:hover {
-    background-color: var(--java-700);
-}
-
-.btn_add:active {
-    background-color: var(--java-800);
-    scale: 0.95;
 }
