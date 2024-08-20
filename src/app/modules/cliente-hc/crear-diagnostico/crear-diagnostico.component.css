@@ -1,0 +1,52 @@
+textarea {
+    resize: vertical;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.profile-form {
+    display: grid;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form div:nth-child(2) {
+    position: relative;
+}
+
+.profile-form .list-form-group {
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    max-height: 350px;
+}
+
+.list-element {
+    padding: 0 0.2rem;
+}
+
+.list-element input:first-child {
+    max-width: 50px;
+    margin-right: 0.2rem;
+}
+
+.form-actions {
+    display: grid;
+    gap: 10px;
+}
+
+@media (width >=768px) {
+    .profile-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    textarea {
+        resize: both;
+    }
+}

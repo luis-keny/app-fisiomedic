@@ -1,0 +1,62 @@
+<form [formGroup]="diagnosticoForm" class="profile-form" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+        <label class="form-group">
+            <span class="required">Diagnostico:</span>
+            <textarea formControlName="diagnostico" rows="3" placeholder="Diagnostico del paciente"></textarea>
+        </label>
+
+        <label class="form-group">
+            <span class="required">Fecha:</span>
+            <input type="date" formControlName="fecha" />
+        </label>
+
+        <label class="form-group">
+            <span>Inicio de enfermedad:</span>
+            <input type="date" formControlName="inicioEnfermedad" />
+        </label>
+
+        <label class="form-group">
+            <span>Peso (Kg):</span>
+            <input type="number" formControlName="peso" placeholder="80" />
+        </label>
+
+        <label class="form-group">
+            <span>Talla (cm):</span>
+            <input type="text" formControlName="talla" placeholder="180" />
+        </label>
+
+        <label class="form-group">
+            <span>N sesión:</span>
+            <input type="number" formControlName="nSesion" placeholder="10" min="0" />
+        </label>
+
+        <label class="form-group">
+            <span>Plan de pago:</span>
+            <textarea formControlName="planPago" rows="2" placeholder="Como estaria pagando el cliente"></textarea>
+        </label>
+
+        <label class="form-group">
+            <span>Observación:</span>
+            <textarea formControlName="observacion" rows="4" placeholder="Otras observaciones necesarias"></textarea>
+        </label>
+    </div>
+
+    <div class="form-section">
+        <div class="list-form-group">
+            <label class="title-secondary">Plan de pago</label>
+            <div class="list-form">
+                <div class="list-element">
+                    <input type="number" placeholder="50" min="0">
+                    <input type="date">
+                    <span class="icon-delete"></span>
+                </div>
+            </div>
+            <button type="button" class="btn-add">Agregar pago</button>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-outline" (click)="onDelete()">Cancelar</button>
+    </div>
+</form>
