@@ -1,19 +1,19 @@
 <form class="profile-form" [formGroup]="personForm" (ngSubmit)="onSubmit()">
     <div class="form-section">
-        <div class="form-group">
-            <label class="required" for="name">Nombre</label>
+        <label class="form-group">
+            <span class="required">Nombre</span>
             <input id="name" type="text" placeholder="Alvaro..." formControlName="nombre"
                 [classList]="personForm.get('nombre')?.invalid && errorSubmitted ? 'invalid': ''" required>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label class="required" for="name">Apellido</label>
+        <label class="form-group">
+            <span class="required">Apellido</span>
             <input id="name" type="text" placeholder="Maguiña..." formControlName="apellido"
                 [classList]="personForm.get('apellido')?.invalid && errorSubmitted ? 'invalid': ''" required>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label class="required" for="gender">Género</label>
+        <label class="form-group">
+            <span class="required">Género</span>
             <select name="gender" id="gender"
                 [classList]="personForm.get('genero')?.invalid && errorSubmitted ? 'invalid': ''"
                 (change)="changeDocumentType($event, 'genero')" formControlName="genero" required>
@@ -21,10 +21,10 @@
                 <option [value]="true">Masculino</option>
                 <option [value]="false">Femenino</option>
             </select>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label class="required" for="document">Tipo documento</label>
+        <label class="form-group">
+            <span class="required">Tipo documento</span>
             <select name="document" id="document" formControlName="tipo_documento"
                 [classList]="personForm.get('tipo_documento')?.invalid && errorSubmitted ? 'invalid': ''"
                 (change)="changeDocumentType($event, 'tipo_documento')" required>
@@ -32,89 +32,90 @@
                 <option value="true" selected>DNI</option>
                 <option value="false">Otros</option>
             </select>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label class="required" for="dni">Nro. Documento</label>
+        <label class="form-group">
+            <span class="required">Nro. Documento</span>
             <input id="dni" type="text" placeholder="77777777" formControlName="ndoc_documento"
                 [classList]="personForm.get('ndoc_documento')?.invalid && errorSubmitted ? 'invalid' : ''" required>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="birthDate">Fecha de Nacimiento</label>
+        <label class="form-group">
+            <span>Fecha de Nacimiento</span>
             <input id="birthDate" type="date" formControlName="fecha_nac">
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="birthPlace">Lugar de Nacimiento</label>
+        <label class="form-group">
+            <span>Lugar de Nacimiento</span>
             <input id="birthPlace" type="text" placeholder="Hospital de vitarte" formControlName="lugar_nac">
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="maritalStatus">Estado Civil</label>
+        <label class="form-group">
+            <span>Estado Civil</span>
             <select name="maritalStatus" id="maritalStatus" formControlName="estado_civil">
                 <option [value]="null" selected disabled>Seleccionar</option>
                 <option value="soltero">Soltero</option>
                 <option value="casado">Casado</option>
                 <option value="divorciado">Divorciado</option>
             </select>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="childrenCount">Número de Hijos</label>
+        <label class="form-group">
+            <span>Número de Hijos</span>
             <input id="childrenCount" type="number" placeholder="4" min="0" formControlName="n_hijos">
-        </div>
+        </label>
     </div>
 
     <div class="form-section">
-        <div class="form-group">
-            <label for="email">Correo Electrónico</label>
+        <label class="form-group">
+            <span>Correo Electrónico</span>
             <input id="email" type="email" placeholder="example@gmail.com" formControlName="correo">
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="phone">Teléfono</label>
+        <label class="form-group">
+            <span>Teléfono</span>
             <input id="phone" type="number" placeholder="999654542" formControlName="telefono">
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="address">Dirección</label>
+        <label class="form-group">
+            <span>Dirección</span>
             <input id="address" type="text" placeholder="Mz C. Lt14 La era" formControlName="domicilio">
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="address">Residencia</label>
+        <label class="form-group">
+            <span>Residencia</span>
             <input id="address" type="text" placeholder="Lugar temporal donde vive" formControlName="residencia">
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label for="reference">Referencia</label>
+        <label class="form-group">
+            <span>Referencia</span>
             <select name="reference" id="reference" formControlName="referencia">
                 <option [value]="null" selected disabled>Seleccionar</option>
                 @for (ref of referencias; track $index) {
                 <option [value]="ref">{{ref}}</option>
                 }
             </select>
-        </div>
+        </label>
 
-        <div class="form-group">
-            <label>Otros Teléfonos</label>
-            <div class="other-phones" formArrayName="telefonosDTO">
+        <div class="list-form-group">
+            <span class="title-secondary">Otros Teléfonos</span>
+            <div class="list-form" formArrayName="telefonosDTO">
                 @if (telefonos!== undefined) {
-                    @if (telefonos.length > 0) {
-                        <div *ngFor="let telefono of telefonos.controls; let i = index" [formGroupName]="i">
-                            <input type="number" placeholder="999654542" formControlName="telefono">
-                            <span class="icon-delete" (click)="eliminarTelefono(i)"></span>
-                        </div>   
-                    }
+                @if (telefonos.length > 0) {
+                <div class="list-element" *ngFor="let telefono of telefonos.controls; let i = index"
+                    [formGroupName]="i">
+                    <input type="number" placeholder="999654542" formControlName="telefono">
+                    <span class="icon-delete" (click)="eliminarTelefono(i)"></span>
+                </div>
+                }
                 }
             </div>
-            <button type="button" class="add-phone-btn" (click)="agregarTelefono()">Agregar Otro Teléfono</button>
+            <button type="button" class="btn-add" (click)="agregarTelefono()">Agregar teléfono</button>
         </div>
     </div>
 
     <div class="form-actions">
-        <button class="btn_save" type="submit">Guardar</button>
-        <button class="btn_cancel" type="button" (click)="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <button class="btn btn-outline" type="button" (click)="cancel()">Cancelar</button>
     </div>
 </form>

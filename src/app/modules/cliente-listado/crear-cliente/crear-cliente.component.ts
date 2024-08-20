@@ -22,7 +22,7 @@ type attribute = 'genero' | 'tipo_documento'
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './crear-cliente.component.html',
-  styleUrl: './crear-cliente.component.css'
+  styleUrls: ['./crear-cliente.component.css', '../../../shared/css/form-elements.css'],
 })
 export class CrearClienteComponent implements AfterViewInit, OnDestroy {
   errorSubmitted: boolean = false;

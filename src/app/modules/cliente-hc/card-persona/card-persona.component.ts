@@ -13,7 +13,7 @@ import { PersonaService } from '../../../core/index.service.http';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card-persona.component.html',
-  styleUrl: './card-persona.component.css'
+  styleUrls: ['./card-persona.component.css', '../../../shared/css/btn.css']
 })
 export class CardPersonaComponent {
   @Input() persona: PersonaHc = {}
