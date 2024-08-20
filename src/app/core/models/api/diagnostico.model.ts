@@ -1,4 +1,4 @@
-import { EstadoDiagnostico } from '../../index.model.api';
+import { EstadoDiagnostico, Pago, Sesion } from '../../index.model.api';
 
 export interface Diagnostico {
     idhc?: number
@@ -15,4 +15,6 @@ export interface Diagnostico {
     monto_total?: number
     edad?: number
     esta_DiagDTO?: EstadoDiagnostico
+    pagosDTOs?: Pago[]
+    sesionesDTOs?: Sesion[]
 }
