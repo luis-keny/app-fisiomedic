@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CardAgendaComponent } from './card-agenda/card-agenda.component';
+
 
 @Component({
   selector: 'app-agenda',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CardAgendaComponent],
   templateUrl: './agenda.component.html',
   styleUrls: ['./agenda.component.css', '../../shared/css/header-views.css']
 })
