@@ -39,9 +39,9 @@
                         </g>
                     </svg>
                     <input type="checkbox" style="display: none;">
-                    <input type="checkbox" style="display: none;" *ngIf="notification.close" checked>
+                    <input type="checkbox" style="display: none;" *ngIf="notification.isClose" checked>
                     <button onchange="removeNotification($index)" style="display: none;"
-                        *ngIf="notification.delete">Eliminar notificacion</button>
+                        *ngIf="notification.isDelete">Eliminar notificacion</button>
                 </label>
             </article>
             <div>

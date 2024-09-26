@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NotificationInterative } from '../../../core/index.model.system';
+import { Notification } from '../../../core/index.model.system';
 import { NotifyService } from '../../../core/index.service.triggers';
 
 @Component({
@@ -12,7 +12,7 @@ import { NotifyService } from '../../../core/index.service.triggers';
   imports: [CommonModule],
 })
 export class NotifyComponent implements OnInit, OnDestroy {
-  listNotification: NotificationInterative[] = [];
+  listNotification: Notification[] = [];
   subscription: Subscription = new Subscription();
 
   constructor(

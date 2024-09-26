@@ -93,7 +93,7 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
   public onSubmit() {
     if (this.personForm.invalid) {
       this.errorSubmitted = true;
-      this.notifySrv.addNotification({ status: 'error', message: 'Faltan campos por rellenar' });
+      this.notifySrv.addNotification('error', 'Faltan campos por rellenar');
       return;
     }
 
@@ -111,11 +111,11 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
   private guardar() {
     this.personaSrv.save(this.persona).subscribe({
       next: () => {
-        this.notifySrv.addNotification({ status: 'success', message: 'Guardado con exito' });
+        this.notifySrv.addNotification('success', 'Guardado con exito');
         this.cerrarModal();
       },
       error: (err) => {
-        this.notifySrv.addNotification({ status: 'error', message: err.message });
+        this.notifySrv.addNotification('error', err.message );
       }
     })
   }
@@ -123,11 +123,11 @@ export class CrearClienteComponent implements AfterViewInit, OnDestroy {
   public update() {
     this.personaSrv.edit(this.persona).subscribe({
       next: () => {
-        this.notifySrv.addNotification({ status: 'success', message: 'Actualizado con exito' });
+        this.notifySrv.addNotification('success','Actualizado con exito');
         this.cerrarModal();
       },
       error: (err) => {
-        this.notifySrv.addNotification({ status: 'error', message: err.message });
+        this.notifySrv.addNotification('error',err.message);
       }
     })
   }

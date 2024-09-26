@@ -49,11 +49,11 @@ export class CardPersonaComponent {
       if (id === null) return;
       this.personaSrv.delete(id).subscribe({
         next: () => {
-          this.notifySrv.addNotification({ status: 'success', message: 'Persona borrada con exito' })
+          this.notifySrv.addNotification('success', 'Persona borrada con exito')
           this.route.navigate(['/home/cliente'])
         },
         error: () => {
-          this.notifySrv.addNotification({ status: 'error', message: 'Error al borrar persona' })
+          this.notifySrv.addNotification('error','Error al borrar persona')
         }
       })
     }

@@ -5,18 +5,25 @@ import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 import { CardClienteComponent } from './components/card-cliente/card-cliente.component';
-import { BreadcrumbService, ModalService, NotifyService } from '../../core/index.service.triggers';
-import { FiltrarPersonaPipe } from '../../core/index.pipe.main';
-import { PersonaService } from '../../core/index.service.http';
+import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.component';
+
 import { Persona } from '../../core/index.model.api';
 import { Modal } from '../../core/index.model.system';
+
 import { setLocalStorage } from '../../core/index.function';
-import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.component';
+import { FiltrarPersonaPipe } from '../../core/index.pipe.main';
+import { PersonaService } from '../../core/index.service.http';
+import { BreadcrumbService, ModalService, NotifyService } from '../../core/index.service.triggers';
 
 @Component({
   selector: 'app-cliente-listado',
   standalone: true,
-  imports: [RouterLink, CardClienteComponent, CommonModule, FiltrarPersonaPipe, FormsModule],
+  imports: [
+    CommonModule, FormsModule, 
+    RouterLink,
+    CardClienteComponent,
+    FiltrarPersonaPipe,
+  ],
   templateUrl: './cliente-listado.component.html',
   styleUrls: ['./cliente-listado.component.css', '../../shared/css/header-views.css']
 })
@@ -32,7 +39,7 @@ export class ClienteListadoComponent implements OnInit, AfterViewInit {
     private personaSrv: PersonaService,
     private notifySrv: NotifyService,
     private modalSrv: ModalService,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +56,7 @@ export class ClienteListadoComponent implements OnInit, AfterViewInit {
         this.personaList = data;
       },
       error: (err) => {
-        this.notifySrv.addNotification({ status: 'error', message: "Error del servidor" });
+        this.notifySrv.addNotification('error',"Error del servidor" );
       }
     });
   }

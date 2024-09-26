@@ -1,21 +1,21 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Notification, NotificationInterative } from '../../index.model.system';
+import { Notification, Status } from '../../index.model.system';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotifyService {
-  private listNotify: NotificationInterative[] = [];
-  private notify$: EventEmitter<NotificationInterative[]> = new EventEmitter();
+  private listNotify: Notification[] = [];
+  private notify$: EventEmitter<Notification[]> = new EventEmitter();
 
-  public addNotification(notification: Notification) {
-    let { status, message } = notification;
-    let ntfInterative: NotificationInterative = new NotificationInterative(status, message);
+  public addNotification(status: Status , message: string) {
+    let ntfInterative: Notification = new Notification(status, message);
     this.listNotify.push(ntfInterative);
     this.notify$.emit(this.listNotify);
   }
 
-  public getNotifications(): EventEmitter<NotificationInterative[]> {
+  public getNotifications(): EventEmitter<Notification[]> {
     return this.notify$;
   }
 

@@ -5,21 +5,24 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { CardPersonaComponent } from './components/card-persona/card-persona.component';
 import { CrearDiagnosticoComponent } from './components/crear-diagnostico/crear-diagnostico.component';
 import { GrupoDiagnosticoComponent } from './components/grupo-diagnostico/grupo-diagnostico.component';
-import { Breadcrumb, Modal } from '../../core/index.model.system';
-import { BreadcrumbService, ModalService } from '../../core/index.service.triggers';
+import { BreadcrumbItem, Modal } from '../../core/index.model.system';
 import { PersonaHc } from '../../core/index.model.api';
 import { getLocalStoragePersona } from '../../core/index.function';
 import { PersonaService } from '../../core/index.service.http';
+import { BreadcrumbService, ModalService } from '../../core/index.service.triggers';
 
 @Component({
   selector: 'app-cliente-hc',
   standalone: true,
-  imports: [RouterLink, RouterModule, CardPersonaComponent, GrupoDiagnosticoComponent, CrearDiagnosticoComponent],
+  imports: [
+    RouterLink, RouterModule,
+    CardPersonaComponent, GrupoDiagnosticoComponent, CrearDiagnosticoComponent
+  ],
   templateUrl: './cliente-hc.component.html',
   styleUrl: './cliente-hc.component.css'
 })
 export class ClienteHcComponent implements OnInit, AfterViewInit, OnDestroy {
-  breadcrumb: Breadcrumb[] = [
+  breadcrumbs: BreadcrumbItem[] = [
     { name: 'listado', route: '/home/cliente' },
     { name: 'historial clinico', route: '/home/cliente/hc' },
   ];
@@ -31,16 +34,16 @@ export class ClienteHcComponent implements OnInit, AfterViewInit, OnDestroy {
     private breadcrumbSrv: BreadcrumbService,
     private personaSrv: PersonaService,
     private modalSrv: ModalService,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
   ) { }
 
   ngOnInit(): void {
     this.getPersonaAndSetBreadcrumb();
-    this.getActivateBtnBreadSub = this.breadcrumbSrv.activateBtn$.subscribe(res => this.inicializarModal());
+    this.getActivateBtnBreadSub = this.breadcrumbSrv.isActiveBtn$.subscribe(res => this.inicializarModal());
   }
 
   ngAfterViewInit(): void {
-    this.breadcrumbSrv.defineBreadcrumb(this.breadcrumb, true);
+    this.breadcrumbSrv.defineBreadcrumb(this.breadcrumbs, true);
   }
 
   ngOnDestroy(): void {
@@ -61,14 +64,14 @@ export class ClienteHcComponent implements OnInit, AfterViewInit, OnDestroy {
     const value = getLocalStoragePersona();
     if (!value) return;
 
-    if (!isUpdate) this.breadcrumb[1].name = value.nombre + ' ' + value.apellido;
+    if (!isUpdate) this.breadcrumbs[1].name = value.nombre + ' ' + value.apellido;
 
     let id = value.idpersona ?? null;
     if (!id) return;
 
     this.getPersonaSub = this.personaSrv.getOneById(id).subscribe(p => {
       this.persona = p;
-      this.breadcrumb[1].name = p.nombre + ' ' + p.apellido;
+      this.breadcrumbs[1].name = p.nombre + ' ' + p.apellido;
     })
 
   }

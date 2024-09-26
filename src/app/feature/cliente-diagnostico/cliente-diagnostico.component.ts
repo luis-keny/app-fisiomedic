@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Breadcrumb } from '../../core/index.model.system';
+import { BreadcrumbItem } from '../../core/index.model.system';
 import { BreadcrumbService } from '../../core/index.service.triggers';
 import { SeguimientoPagoComponent } from './components/seguimiento-pago/seguimiento-pago.component';
 import { SesionComponent } from './components/sesion/sesion.component';
@@ -12,7 +12,7 @@ import { SesionComponent } from './components/sesion/sesion.component';
   styleUrl: './cliente-diagnostico.component.css'
 })
 export class ClienteDiagnosticoComponent {
-  breadcrumb: Breadcrumb[] = [
+  breadcrumb: BreadcrumbItem[] = [
     { name: 'listado', route: '/home/cliente' },
     { name: 'historial clinico', route: '/home/cliente/hc' },
     { name: 'diagnostico' },

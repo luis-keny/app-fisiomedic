@@ -1,15 +1,10 @@
-type Status = 'success' | 'error' | 'warning' | 'info';
+export type Status = 'success' | 'error' | 'warning' | 'info';
 
-export interface Notification {
-    status: Status;
-    message: String;
-}
-
-export class NotificationInterative {
+export class Notification {
     status: Status = 'info';
     message: String = 'Pendiente';
-    close: boolean = false;
-    delete: boolean = false;
+    isClose: boolean = false;
+    isDelete: boolean = false;
 
     constructor(status: Status, message: String) {
         this.status = status;
@@ -19,10 +14,10 @@ export class NotificationInterative {
 
     private startTimer(): void {
         setTimeout(() => {
-            this.close = true;
+            this.isClose = true;
         }, 2500);
         setTimeout(() => {
-            this.delete = true;
+            this.isDelete = true;
         }, 3000);
     }
 }

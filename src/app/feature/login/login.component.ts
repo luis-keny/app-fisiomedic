@@ -32,17 +32,11 @@ export class LoginComponent {
     setTimeout(() => {
       const value = this.user.value;
       if (value.name === 'fisiomedic.admin' && value.password === 'Admin123#') {
-        this.notifySrv.addNotification({
-          status: 'success',
-          message: 'Bienvenido ' + value.name
-        })
+        this.notifySrv.addNotification('success','Bienvenido ' + value.name)
         this.isLoading = false;
         this.router.navigate(['home']);
       } else {
-        this.notifySrv.addNotification({
-          status: 'error',
-          message: 'Usuario o contraseña incorrectos'
-        })
+        this.notifySrv.addNotification('error','Usuario o contraseña incorrectos')
         this.isLoading = false;
       }
     }, 3000)

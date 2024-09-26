@@ -1,9 +1,9 @@
-export interface Breadcrumb {
+export interface BreadcrumbItem  {
     name: string;
     route?: string;
 }
 
-export interface BreadcrumbComportamiento {
-    breadcrumbList: Breadcrumb[],
-    btnAdd?: boolean
+export interface BreadcrumbBar {
+    items: BreadcrumbItem[],
+    hasButton?: boolean
 }

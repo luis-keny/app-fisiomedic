@@ -1,47 +1,44 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Breadcrumb, BreadcrumbComportamiento } from '../../index.model.system';
+import { BreadcrumbItem, BreadcrumbBar } from '../../index.model.system';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreadcrumbService {
-  public activateBtn$ = new EventEmitter<boolean>();
-  private listBreadcrumb: Breadcrumb[] = []
-  private breadcrumbs$: EventEmitter<BreadcrumbComportamiento> = new EventEmitter();
-  private comportamiento: BreadcrumbComportamiento = { breadcrumbList: [] }
+  public isActiveBtn$ = new EventEmitter<boolean>();
+  private breadcrumbs$: EventEmitter<BreadcrumbBar> = new EventEmitter();
 
-  public defineBreadcrumb(breadcrumbs: Breadcrumb[], btnAdd?: boolean) {
-    this.listBreadcrumb = breadcrumbs;
-    this.comportamiento.breadcrumbList = this.listBreadcrumb;
-    this.comportamiento.btnAdd = btnAdd || false;
-    this.breadcrumbs$.emit(this.comportamiento);
+  private items: BreadcrumbItem[] = []
+  private breadcrumbs: BreadcrumbBar = { items: [] }
+
+  public defineBreadcrumb(items: BreadcrumbItem[], hasButton?: boolean) {
+    this.items = items;
+    this.breadcrumbs.items = this.items;
+    this.breadcrumbs.hasButton = hasButton || false;
+    
+    this.breadcrumbs$.emit(this.breadcrumbs);
   }
 
-  public addBread(breadcrumb: Breadcrumb) {
-    this.listBreadcrumb.push(breadcrumb);
-    this.comportamiento.breadcrumbList = this.listBreadcrumb;
-    this.breadcrumbs$.emit(this.comportamiento);
+  public addBread(item: BreadcrumbItem) {
+    this.items.push(item);
+    this.breadcrumbs.items = this.items;
+    this.breadcrumbs$.emit(this.breadcrumbs);
   }
 
-  public getBreadcrumbs(): EventEmitter<BreadcrumbComportamiento> {
-    setTimeout(() => {
-      this.breadcrumbs$.emit(this.comportamiento);
-    }, 0);
+  public getBreadcrumbs(): EventEmitter<BreadcrumbBar> {
+    this.breadcrumbs$.emit(this.breadcrumbs);
     return this.breadcrumbs$;
   }
 
   public removeLastBread() {
-    this.listBreadcrumb.splice(this.listBreadcrumb.length - 1, 1);
+    this.items.splice(this.items.length - 1, 1);
   }
 
   public removeBread(index: number) {
-    this.listBreadcrumb.splice(index, 1);
+    this.items.splice(index, 1);
   }
 
   public removeAllBread() {
-    this.listBreadcrumb = [];
-    this.comportamiento.breadcrumbList = this.listBreadcrumb;
-    this.comportamiento.btnAdd = false;
-    this.breadcrumbs$.emit(this.comportamiento);
+    this.defineBreadcrumb([], false);
   }
 }
